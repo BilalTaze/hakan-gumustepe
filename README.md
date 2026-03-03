@@ -1,0 +1,27 @@
+# Cabinet Dentaire du Parc
+
+Site vitrine du Cabinet Dentaire du Parc — soins dentaires d'excellence à Paris.
+
+## Technologies
+
+- React + TypeScript
+- Vite
+- Tailwind CSS
+- shadcn/ui
+
+## Installation
+
+```sh
+npm install
+npm run dev
+```
+
+## Déploiement
+
+Le projet peut être déployé sur Vercel, Netlify ou tout hébergement statique classique.
+
+```sh
+npm run build
+```
+
+Les fichiers de production seront générés dans le dossier `dist/`.

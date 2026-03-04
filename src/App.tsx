@@ -13,6 +13,7 @@ import Blog from "./pages/Blog";
 import BlogArticle from "./pages/BlogArticle";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import { Analytics } from "@vercel/analytics/next";
 
 const queryClient = new QueryClient();
 

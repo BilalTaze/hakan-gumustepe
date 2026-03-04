@@ -1,6 +1,6 @@
 # Cabinet Dentaire du Parc
 
-Site vitrine du Cabinet Dentaire du Parc — soins dentaires d'excellence à Paris.
+Site vitrine du Cabinet Dentaire Hakan Gumustepe — soins dentaires d'excellence à Strasbourg.
 
 ## Technologies
 

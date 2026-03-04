@@ -19,13 +19,14 @@ const soinIcons: Record<string, any> = { Sparkles, Shield, Crown, Wrench, Star, 
 
 /* ============ HERO ============ */
 const HeroSection = () => (
-  <section className="relative min-h-[90vh] md:min-h-[85vh] flex items-center overflow-hidden">
-    <div className="absolute inset-0">
-      <img src={heroImg} alt="Cabinet dentaire moderne" className="w-full h-full object-cover" />
-      <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
-    </div>
-    <div className="container relative z-10 py-20 md:py-32">
-      <motion.div initial="hidden" animate="visible" className="max-w-2xl">
+  <section className="relative min-h-[75vh] flex items-center overflow-hidden">
+  <div className="absolute inset-0">
+    <img src={heroImg} alt="Cabinet dentaire moderne" className="w-full h-full object-cover" />
+    <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
+  </div>
+
+  <div className="container relative z-10 py-12 md:py-16">
+    <motion.div initial="hidden" animate="visible" className="max-w-xl">
         <motion.p variants={fadeUp} custom={0} className="text-accent font-medium text-sm md:text-base mb-4 tracking-wide uppercase">
           {CABINET_CONFIG.name}
         </motion.p>
@@ -59,7 +60,6 @@ const TrustBanner = () => {
   const items = [
     { icon: AlertCircle, label: "Urgences acceptées" },
     { icon: ShieldCheck, label: "Conventionné" },
-    { icon: Car, label: "Parking gratuit" },
     { icon: Accessibility, label: "Accès PMR" },
     { icon: CreditCard, label: "Paiement facilité" },
   ];

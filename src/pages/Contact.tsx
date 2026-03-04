@@ -26,20 +26,48 @@ const Contact = () => {
     document.head.appendChild(script);
   }, [recaptchaLoaded]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (formState.honeypot) return;
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-    try {
-      if ((window as any).grecaptcha) {
-        await (window as any).grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: "contact" });
-      }
-    } catch {
-      // Continue without recaptcha in dev
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  if (formState.honeypot) return;
+
+  setError(null);
+  setLoading(true);
+
+  try {
+    const payload = {
+      nom: formState.nom,
+      email: formState.email,
+      telephone: formState.telephone,
+      sujet: formState.sujet,
+      message: formState.message,
+      consent: formState.consent ? "oui" : "non",
+      source: window.location.href,
+    };
+
+    const res = await fetch(CABINET_CONFIG.formspreeEndpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!res.ok) {
+      throw new Error("Erreur lors de l’envoi. Réessayez ou appelez le cabinet.");
     }
 
     setSubmitted(true);
-  };
+    setFormState({ nom: "", email: "", telephone: "", sujet: "", message: "", consent: false, honeypot: "" });
+  } catch (err: any) {
+    setError(err?.message ?? "Erreur lors de l’envoi.");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <>
@@ -169,10 +197,20 @@ const Contact = () => {
                     J'accepte que mes données soient traitées conformément à la politique de confidentialité.
                   </label>
                   <p className="text-xs text-muted-foreground">
-                    Ce formulaire est protégé par reCAPTCHA.
+                    Un système anti-spam protège ce formulaire.
                   </p>
-                  <Button type="submit" className="w-full bg-accent hover:bg-mint-dark text-accent-foreground font-medium" style={{ boxShadow: "var(--shadow-button)" }}>
-                    Envoyer le message
+                  {error && (
+                    <p className="text-sm text-destructive">
+                      {error}
+                    </p>
+                  )}
+                  <Button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full bg-accent hover:bg-mint-dark text-accent-foreground font-medium disabled:opacity-60"
+                    style={{ boxShadow: "var(--shadow-button)" }}
+                  >
+                    {loading ? "Envoi..." : "Envoyer le message"}
                   </Button>
                 </form>
               )}

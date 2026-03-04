@@ -7,6 +7,7 @@ export const CABINET_CONFIG = {
   zip: "67000",
   phone: "01 42 56 78 90",
   email: "contact@cabinet-dentaire-du-parc.fr",
+  formspreeEndpoint: "https://formspree.io/f/mzdjppep",
   openingHours: [
     { day: "Lundi", hours: "9h00 - 19h00" },
     { day: "Mardi", hours: "9h00 - 19h00" },

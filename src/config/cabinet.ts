@@ -20,8 +20,8 @@ export const CABINET_CONFIG = {
   googleMapsEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2627.5532285245154!2d7.779107711935066!3d48.80950497120586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796eace2644b0f1%3A0x8214936fdab300e0!2s1%20Rte%20de%20Strasbourg%2C%2067500%20Haguenau%2C%20France!5e0!3m2!1sfr!2slv!4v1772663670399!5m2!1sfr!2slv",
   placeId: "VOTRE_PLACE_ID",
   googlePlacesApiKey: "VOTRE_GOOGLE_PLACES_API_KEY",
-  doctolibEmbedUrl: "https://www.doctolib.fr/cabinet-dentaire/strasbourg/cabinet-dentaire-hakan-gumustepe",
-  doctolibProfileUrl: "https://www.doctolib.fr/cabinet-dentaire/strasbourg/cabinet-dentaire-hakan-gumustepe",
+  doctolibEmbedUrl: "https://www.doctolib.fr/medecin-generaliste/strasbourg/selim-gumustepe",
+  doctolibProfileUrl: "https://www.doctolib.fr/medecin-generaliste/strasbourg/selim-gumustepe",
   socialLinks: {
     facebook: "https://facebook.com",
     instagram: "https://instagram.com",

@@ -11,6 +11,7 @@ const navLinks = [
   { label: "Nos Soins", path: "/soins" },
   { label: "L'Équipe", path: "/equipe" },
   { label: "Conseils", path: "/blog" },
+  { label: "FAQ", path: "/faq" },
   { label: "Contact", path: "/contact" },
 ];
 

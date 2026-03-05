@@ -430,30 +430,6 @@ const LocationSection = () => (
   </section>
 );
 
-/* ============ FAQ ============ */
-const FAQSection = () => (
-  <section className="section-padding bg-background">
-    <div className="container max-w-3xl">
-      <div className="text-center mb-12">
-        <span className="text-accent font-medium text-sm uppercase tracking-wide">FAQ</span>
-        <h2 className="section-title mt-2 mb-4">Questions fréquentes</h2>
-      </div>
-      <Accordion type="single" collapsible className="space-y-3">
-        {FAQ_ITEMS.map((item, i) => (
-          <AccordionItem key={i} value={`faq-${i}`} className="glass-card px-6 border-none">
-            <AccordionTrigger className="text-left font-medium text-sm md:text-base hover:no-underline py-5">
-              {item.q}
-            </AccordionTrigger>
-            <AccordionContent className="text-muted-foreground text-sm leading-relaxed pb-5">
-              {item.a}
-            </AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
-    </div>
-  </section>
-);
-
 /* ============ CONTACT FORM ============ */
 const ContactFormSection = () => {
   const [formState, setFormState] = useState({ nom: "", email: "", telephone: "", sujet: "", message: "", consent: false, honeypot: "" });
@@ -549,7 +525,6 @@ const Index = () => (
     <TechSection />
     <ReviewsSection />
     <LocationSection />
-    <FAQSection />
     <ContactFormSection />
   </>
 );

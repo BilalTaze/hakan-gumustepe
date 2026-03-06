@@ -12,7 +12,7 @@ const navLinks = [
   { label: "L'Équipe", path: "/equipe" },
   { label: "Conseils", path: "/blog" },
   { label: "FAQ", path: "/faq" },
-  { label: "Contact", path: "/contact" },
+  { label: "Nous contacter", path: "/contact" },
 ];
 
 const Header = () => {
@@ -52,7 +52,7 @@ const Header = () => {
               key={link.path}
               to={link.path}
               className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
-                location.pathname === link.path
+                location.pathname === link.path || link.path === "/contact"
                   ? "text-accent bg-mint-light"
                   : "text-muted-foreground hover:text-foreground hover:bg-secondary"
               }`}
@@ -95,7 +95,7 @@ const Header = () => {
                   to={link.path}
                   onClick={() => setMobileOpen(false)}
                   className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                    location.pathname === link.path
+                    location.pathname === link.path || link.path === "/contact"
                       ? "text-accent bg-mint-light"
                       : "text-muted-foreground hover:text-foreground hover:bg-secondary"
                   }`}

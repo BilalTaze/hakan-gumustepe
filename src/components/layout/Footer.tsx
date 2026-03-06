@@ -28,7 +28,7 @@ const Footer = () => (
         <div>
           <h3 className="font-serif font-bold text-base mb-4">Navigation</h3>
           <ul className="space-y-2 text-sm text-primary-foreground/70">
-            {[["Accueil", "/"], ["Le Cabinet", "/cabinet"], ["Nos Soins", "/soins"], ["L'Équipe", "/equipe"], ["Conseils", "/blog"], ["FAQ", "/faq"], ["Contact", "/contact"]].map(([label, path]) => (
+            {[["Accueil", "/"], ["Le Cabinet", "/cabinet"], ["Nos Soins", "/soins"], ["L'Équipe", "/equipe"], ["Conseils", "/blog"], ["FAQ", "/faq"], ["Nous contacter", "/contact"]].map(([label, path]) => (
               <li key={path}><Link to={path} className="hover:text-accent transition-colors">{label}</Link></li>
             ))}
           </ul>

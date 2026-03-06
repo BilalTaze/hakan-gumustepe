@@ -11,20 +11,10 @@ const fadeUp = {
   visible: (i: number = 0) => ({ opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.6 } }),
 };
 
-const RECAPTCHA_SITE_KEY = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"; // Test key — replace with real key
 
 const Contact = () => {
   const [formState, setFormState] = useState({ nom: "", email: "", telephone: "", sujet: "", message: "", consent: false, honeypot: "" });
   const [submitted, setSubmitted] = useState(false);
-  const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
-
-  const loadRecaptcha = useCallback(() => {
-    if (recaptchaLoaded) return;
-    const script = document.createElement("script");
-    script.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`;
-    script.onload = () => setRecaptchaLoaded(true);
-    document.head.appendChild(script);
-  }, [recaptchaLoaded]);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -159,7 +149,7 @@ const Contact = () => {
                   <p className="text-muted-foreground text-sm">Nous vous répondrons dans les plus brefs délais.</p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} onFocus={loadRecaptcha} className="glass-card p-6 md:p-8 space-y-5">
+                <form onSubmit={handleSubmit} className="glass-card p-6 md:p-8 space-y-5">
                   <h2 className="font-serif font-bold text-xl mb-2">Envoyez-nous un message</h2>
                   <input type="text" name="hp" value={formState.honeypot} onChange={e => setFormState(p => ({ ...p, honeypot: e.target.value }))} className="hidden" tabIndex={-1} autoComplete="off" />
                   <div className="grid sm:grid-cols-2 gap-4">

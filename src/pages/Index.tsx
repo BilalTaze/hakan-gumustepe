@@ -430,88 +430,6 @@ const LocationSection = () => (
   </section>
 );
 
-/* ============ CONTACT FORM ============ */
-const ContactFormSection = () => {
-  const [formState, setFormState] = useState({ nom: "", email: "", telephone: "", sujet: "", message: "", consent: false, honeypot: "" });
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (formState.honeypot) return; // anti-spam
-    setSubmitted(true);
-  };
-
-  return (
-    <section className="section-padding bg-ivory">
-      <div className="container max-w-2xl">
-        <div className="text-center mb-12">
-          <span className="text-accent font-medium text-sm uppercase tracking-wide">Contact</span>
-          <h2 className="section-title mt-2 mb-4">Contactez-nous</h2>
-          <p className="section-subtitle mx-auto">Une question ? N'hésitez pas à nous écrire.</p>
-        </div>
-
-        <div className="bg-destructive/10 border border-destructive/20 rounded-xl p-4 mb-8 text-center">
-          <p className="text-sm font-medium text-destructive">
-            🚨 En cas d'urgence dentaire, contactez-nous directement par téléphone :
-            <a href={`tel:${CABINET_CONFIG.phone}`} className="underline ml-1 font-bold">{CABINET_CONFIG.phone}</a>
-          </p>
-        </div>
-
-        {submitted ? (
-          <div className="glass-card p-8 text-center">
-            <div className="w-16 h-16 rounded-full bg-mint-light flex items-center justify-center mx-auto mb-4">
-              <Star size={28} className="text-accent" />
-            </div>
-            <h3 className="font-serif font-bold text-xl mb-2">Message envoyé !</h3>
-            <p className="text-muted-foreground text-sm">Nous vous répondrons dans les plus brefs délais.</p>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="glass-card p-6 md:p-8 space-y-5">
-            <input type="text" name="honeypot" value={formState.honeypot} onChange={e => setFormState(p => ({ ...p, honeypot: e.target.value }))} className="hidden" tabIndex={-1} autoComplete="off" />
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div>
-                <label className="text-sm font-medium mb-1.5 block">Nom *</label>
-                <input required type="text" maxLength={100} value={formState.nom} onChange={e => setFormState(p => ({ ...p, nom: e.target.value }))} className="w-full px-4 py-2.5 rounded-lg border border-border bg-background text-sm focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition" />
-              </div>
-              <div>
-                <label className="text-sm font-medium mb-1.5 block">Email *</label>
-                <input required type="email" maxLength={255} value={formState.email} onChange={e => setFormState(p => ({ ...p, email: e.target.value }))} className="w-full px-4 py-2.5 rounded-lg border border-border bg-background text-sm focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition" />
-              </div>
-            </div>
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div>
-                <label className="text-sm font-medium mb-1.5 block">Téléphone</label>
-                <input type="tel" maxLength={20} value={formState.telephone} onChange={e => setFormState(p => ({ ...p, telephone: e.target.value }))} className="w-full px-4 py-2.5 rounded-lg border border-border bg-background text-sm focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition" />
-              </div>
-              <div>
-                <label className="text-sm font-medium mb-1.5 block">Sujet *</label>
-                <select required value={formState.sujet} onChange={e => setFormState(p => ({ ...p, sujet: e.target.value }))} className="w-full px-4 py-2.5 rounded-lg border border-border bg-background text-sm focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition">
-                  <option value="">Choisir un sujet</option>
-                  <option>Prise de rendez-vous</option>
-                  <option>Renseignement sur un soin</option>
-                  <option>Urgence</option>
-                  <option>Autre</option>
-                </select>
-              </div>
-            </div>
-            <div>
-              <label className="text-sm font-medium mb-1.5 block">Message *</label>
-              <textarea required maxLength={1000} rows={4} value={formState.message} onChange={e => setFormState(p => ({ ...p, message: e.target.value }))} className="w-full px-4 py-2.5 rounded-lg border border-border bg-background text-sm focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition resize-none" />
-            </div>
-            <label className="flex items-start gap-2 text-xs text-muted-foreground cursor-pointer">
-              <input type="checkbox" required checked={formState.consent} onChange={e => setFormState(p => ({ ...p, consent: e.target.checked }))} className="mt-0.5 accent-accent" />
-              J'accepte que mes données soient traitées conformément à la politique de confidentialité du cabinet.
-            </label>
-            <Button type="submit" className="w-full bg-accent hover:bg-mint-dark text-accent-foreground font-medium" style={{ boxShadow: "var(--shadow-button)" }}>
-              Envoyer le message
-            </Button>
-          </form>
-        )}
-      </div>
-    </section>
-  );
-};
-
 /* ============ INDEX PAGE ============ */
 const Index = () => (
   <>
@@ -525,7 +443,6 @@ const Index = () => (
     <TechSection />
     <ReviewsSection />
     <LocationSection />
-    <ContactFormSection />
   </>
 );
 

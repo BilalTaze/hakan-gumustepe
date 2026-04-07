@@ -4,6 +4,28 @@ import { ArrowLeft, Clock, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BLOG_ARTICLES, CABINET_CONFIG } from "@/config/cabinet";
 
+const renderInlineContent = (text: string) => {
+  const segments = text.split(/(\*\*[^*]+\*\*)/g);
+
+  return segments.map((segment, index) => {
+    if (segment.startsWith("**") && segment.endsWith("**")) {
+      return (
+        <strong key={`${segment}-${index}`} className="font-semibold text-foreground">
+          {segment.slice(2, -2)}
+        </strong>
+      );
+    }
+
+    return <span key={`${segment}-${index}`}>{segment}</span>;
+  });
+};
+
+const isSectionHeading = (line: string) => {
+  const trimmedLine = line.trim();
+
+  return trimmedLine.length > 0 && trimmedLine.length <= 40 && !/[.!?]/.test(trimmedLine);
+};
+
 const BlogArticle = () => {
   const { id } = useParams();
   const article = BLOG_ARTICLES.find(a => a.id === id);
@@ -19,7 +41,7 @@ const BlogArticle = () => {
 
   return (
     <>
-      <section className="bg-primary py-20 md:py-28">
+      <section className="bg-primary py-20 md:py-15">
         <div className="container max-w-3xl">
           <Link to="/blog" className="text-accent text-sm font-medium inline-flex items-center gap-1 mb-4 hover:underline">
             <ArrowLeft size={16} /> Retour aux articles
@@ -32,10 +54,48 @@ const BlogArticle = () => {
         </div>
       </section>
 
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-background py-20 md:py-15">
         <div className="container max-w-3xl">
-          <div className="prose prose-lg max-w-none text-muted-foreground leading-relaxed whitespace-pre-line">
-            {article.content}
+          <div className="rounded-3xl border border-border/60 bg-card/80 p-6 shadow-[0_24px_80px_rgba(15,23,42,0.08)] backdrop-blur-sm md:p-8">
+            <div className="space-y-6 text-base leading-8 text-muted-foreground md:text-lg">
+              {article.content
+                .split(/\n\n+/)
+                .map(block => block.trim())
+                .filter(Boolean)
+                .map((block, index) => {
+                  const lines = block.split("\n").map(line => line.trim()).filter(Boolean);
+                  const listItems = lines.filter(line => line.startsWith("- ")).map(line => line.slice(2).trim());
+
+                  if (listItems.length > 0) {
+                    return (
+                      <ul key={`${block}-${index}`} className="space-y-3 rounded-2xl border border-border/50 bg-background/70 p-5 text-muted-foreground">
+                        {listItems.map((item, itemIndex) => (
+                          <li key={`${item}-${itemIndex}`} className="flex gap-3">
+                            <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent" />
+                            <span>{renderInlineContent(item)}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    );
+                  }
+
+                  if (lines.length === 1 && isSectionHeading(lines[0])) {
+                    return (
+                      <div key={`${block}-${index}`} className="pt-2">
+                        <p className="mb-3 inline-flex rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+                          {lines[0]}
+                        </p>
+                      </div>
+                    );
+                  }
+
+                  return (
+                    <p key={`${block}-${index}`} className="whitespace-pre-line">
+                      {renderInlineContent(block)}
+                    </p>
+                  );
+                })}
+            </div>
           </div>
 
           <div className="mt-12 glass-card p-8 text-center">

@@ -39,10 +39,11 @@ const Header = () => {
       {/* Main nav */}
       <div className="container flex items-center justify-between h-16 md:h-18">
         <Link to="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center">
-            <span className="text-accent-foreground font-serif font-bold text-sm">CD</span>
-          </div>
-          <span className="font-serif font-bold text-lg text-foreground hidden sm:inline">{CABINET_CONFIG.name}</span>
+          <img
+            src={CABINET_CONFIG.logo}
+            alt="Logo du cabinet"
+            className="h-8 w-auto object-contain"
+          />
         </Link>
 
         {/* Desktop nav */}

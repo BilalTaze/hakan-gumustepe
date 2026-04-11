@@ -3,6 +3,7 @@ export const CABINET_CONFIG = {
   slogan: "Votre sourire, notre priorité",
   subtitle: "Des soins dentaires d'excellence dans un cadre moderne et rassurant. Notre équipe vous accompagne avec bienveillance pour une santé bucco-dentaire optimale.",
   address: "1 Route de Strasbourg",
+  logo: "/logo.png",
   city: "Haguenau",
   zip: "67000",
   phone: "01 42 56 78 90",

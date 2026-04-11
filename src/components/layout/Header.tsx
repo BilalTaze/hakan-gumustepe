@@ -42,7 +42,7 @@ const Header = () => {
           <img
             src={CABINET_CONFIG.logo}
             alt="Logo du cabinet"
-            className="h-8 w-auto object-contain"
+            className="h-10 w-auto object-contain"
           />
         </Link>
 

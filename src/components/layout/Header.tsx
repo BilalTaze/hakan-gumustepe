@@ -32,7 +32,7 @@ const Header = () => {
               {CABINET_CONFIG.phone}
             </a>
           </div>
-          <span>Lun-Ven : 9h-19h | Sam : 9h-13h</span>
+          <span>Lun-Jeu : 9h-19h | Ven : 9h-18h | Sam-Dim : Fermé</span>
         </div>
       </div>
 

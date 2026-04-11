@@ -1,6 +1,6 @@
-# Cabinet Dentaire du Parc
+# La maison dentaire
 
-Site vitrine du Cabinet Dentaire Hakan Gumustepe — soins dentaires d'excellence à Strasbourg.
+Site vitrine de La maison dentaire — soins dentaires d'excellence à Strasbourg.
 
 ## Technologies
 

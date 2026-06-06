@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button"
 import { CABINET_CONFIG } from "@/config/cabinet"
 import { Calendar } from "lucide-react"
 import PageHero from "@/components/layout/PageHero"
+import Image from "next/image"
+import cabinet1 from "@/assets/cabinet1.webp"
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 } as const,
@@ -76,10 +78,10 @@ const CabinetClient = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="rounded-3xl w-full aspect-[4/5] hidden md:flex items-center justify-center bg-gradient-to-b from-mint-light/50 to-mint-light"
+              className="relative rounded-3xl w-full aspect-[4/5] hidden md:block overflow-hidden"
               style={{ boxShadow: "var(--shadow-card)" }}
             >
-              <span className="font-serif font-bold text-[6rem] leading-none text-accent/15 select-none">MD</span>
+              <Image src={cabinet1} alt="La Maison Dentaire - salle de soins" fill className="object-cover" priority />
             </motion.div>
           </div>
         </div>

@@ -18,7 +18,7 @@ export const CABINET_CONFIG = {
     { day: "Samedi", hours: "Fermé" },
     { day: "Dimanche", hours: "Fermé" },
   ],
-  googleMapsEmbedUrl: "https://www.google.com/maps?q=21+Rue+L%C3%A9onard+de+Vinci,+67200+Strasbourg,+France&output=embed",
+  googleMapsEmbedUrl: "https://www.google.com/maps?q=La+Maison+Dentaire+Strasbourg&output=embed",
   placeId: "VOTRE_PLACE_ID",
   googlePlacesApiKey: "VOTRE_GOOGLE_PLACES_API_KEY",
   doctolibProfileUrl: "https://www.doctolib.fr/centre-medical-et-dentaire/strasbourg/maison-dentaire-strasbourg",
